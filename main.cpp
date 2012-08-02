@@ -1,10 +1,10 @@
-//rittaishi.cpp
+//stereogram.cpp
 /*----------------------------------------------------------------------------------*
  * 立体視画像を作成するプログラム
  * GUIはないので注意。コマンドとして使う。
  * 書式
- * rittaishi サイズ 入力ファイル 出力ファイル
- * rittaishi -h
+ * stereogram サイズ 入力ファイル 出力ファイル
+ * stereogram -h
  *----------------------------------------------------------------------------------*/
 
 #define MARGIN 50	//余白の幅
@@ -24,7 +24,7 @@ void view(unsigned char *image, int width, int height, int colorsize);
 //ヘルプを表示する
 void help(){
 	printf("===使い方===\n"
-		"rittaishi サイズ 入力ファイル 出力ファイル\n"
+		"stereogram サイズ 入力ファイル 出力ファイル\n"
 		"サイズ\t: 入力画像ファイルの画像サイズ　横x縦\n"
 		"\t  例) 100x200\n"
 		"入力ファイル\t: 入力画像ファイル名(raw画像のみ対応)\n"
@@ -32,7 +32,7 @@ void help(){
 		"出力ファイル\t: 出力ファイル名(形式はraw画像、色はRGBの3バイト)\n"
 		"\t  サイズ x 2枚 + マージン　の大きさの画像が出力されます。\n"
 		"===ヘルプ表示===\n"
-		"rittaishi -h \t でヘルプを表示できます。\n"
+		"stereogram -h \t でヘルプを表示できます。\n"
 		);
 }
 
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 		printf("エラー：引数が少ない、または多いです。\n");	//エラー表示
-		printf("ヘルプ : rittaishi -h\n");
+		printf("ヘルプ : stereogram -h\n");
 		return 1;	//エラー終了1
 	}
 	//サイズ取得

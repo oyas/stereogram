@@ -1,4 +1,4 @@
-rittaishi
+stereogram
 
 立体視画像を生成するプログラム。  
 GUIはないので注意。コマンドとして使います。  
@@ -16,8 +16,8 @@ gimpを使用した場合の手順
 
 4.	ダイアログがでるが標準設定のまま保存。
 
-5.	$ rittaishi サイズ 入力ファイル名 出力ファイル名   を実行。
-	(例: $ rittaishi 100x200 test.raw out.raw)
+5.	$ stereogram サイズ 入力ファイル名 出力ファイル名   を実行。
+	(例: $ stereogram 100x200 test.raw out.raw)
 
 6.	作成された画像をgimpで開く。(例: out.rawを開く。)
 

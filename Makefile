@@ -1,5 +1,5 @@
 SOURCE = main.cpp
-PROGRAM = rittaishi
+PROGRAM = stereogram
 SOURCE_V = viewer.cpp
 PROGRAM_V = viewer
 
