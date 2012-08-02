@@ -39,8 +39,8 @@ void help(){
 //メイン関数
 int main(int argc, char *argv[])
 {
-	char *str, *inputfilename, *outputfilename, *check;
-	int width, height, *size;
+	char *inputfilename, *outputfilename;
+	int width, height;
 	FILE *fp;
 		
 	//乱数初期化
@@ -82,7 +82,6 @@ int main(int argc, char *argv[])
 		return 3;	//エラー終了3
 	}
 	view(source, width, height, COLORSIZE);
-	//printf("sizeof source : %d\n", sizeof source);
 	
 	//画像用配列作成
 	const int maxwidth = width*2 + MARGIN * 3;	//作成される画像の幅
@@ -122,7 +121,7 @@ int main(int argc, char *argv[])
 	
 
 	//ファイルに書き出し
-	if( fp = fopen( outputfilename, "wb" ) ){
+	if( (fp = fopen( outputfilename, "wb" )) != NULL ){
 		fwrite(output, out_size, 1, fp);
 		fclose(fp);
 	}else{
@@ -133,7 +132,7 @@ int main(int argc, char *argv[])
 
 	//終了通知
 	printf("%dx%dの画像を作成しました。\n", maxwidth, maxheight);	
-	view(output, maxwidth, maxheight, 3);
+//	view(output, maxwidth, maxheight, 3);
 
 	//後処理
 	delete [] source;

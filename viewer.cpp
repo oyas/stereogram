@@ -24,8 +24,8 @@ void help(){
 //メイン関数
 int main(int argc, char *argv[])
 {
-	char *str, *inputfilename, *outputfilename, *check;
-	int width, height, *size;
+	char *inputfilename;
+	int width, height;
 	FILE *fp;
 		
 	//乱数初期化
