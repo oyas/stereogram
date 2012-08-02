@@ -1,15 +1,11 @@
 //rittaishi.cpp
 /*----------------------------------------------------------------------------------*
- * 立体視画像を作成するプログラム
- * GUIはないので注意。コマンドとして使う。
- * 書式
- * rittaishi サイズ 入力ファイル 出力ファイル
- * rittaishi -h
+ * raw画像の簡易表示プログラム。
  *----------------------------------------------------------------------------------*/
 
 #define MARGIN 50	//余白の幅
 #define RZURE 3		//立体部のずれ(ピクセル)
-#define COLORSIZE 1	//１ピクセル当たりのカラー(byte)
+#define COLORSIZE 3	//１ピクセル当たりのカラー(byte)
 
 #include <cstdio>
 #include <cstring>
@@ -54,8 +50,6 @@ int main(int argc, char *argv[])
 	}
 	//入力ファイル名取得
 	inputfilename = argv[2];
-	//出力ファイル名取得
-//	outputfilename = argv[3];
 
 	printf("読み取り結果：\nサイズ　横%d 縦%d\n入力ファイル名%s\n", width, height, inputfilename);
 
@@ -70,32 +64,8 @@ int main(int argc, char *argv[])
 		printf("%sが開けませんでした。", inputfilename);
 		return 3;	//エラー終了3
 	}
-	//printf("sizeof source : %d\n", sizeof source);
-/*	
-	//画像用配列作成
-	const int maxwidth = width + MARGIN * 3;	//作成される画像の幅
-	const int maxheight = height + MARGIN * 2;	//作成される画像の高さ
-	int out_size = maxwidth * maxheight * 3;
-	unsigned char *output = new unsigned char[ out_size ];
-	for( int i=0; i < maxwidth * maxheight * 3; i++ ){
-		output[i] = 0;	//初期化
-	}
 
-
-	//背景作成
-	const int offset = MARGIN * maxwidth + MARGIN;	//左画像の左上位置
-	const int pairpos = width + MARGIN;		//隣の対応する点までの距離
-	int pos;	//操作点の位置
-	for(int y=0; y < height; y++ ){
-		for(int x=0; x < width; x++ ){
-			pos = offset + y * maxwidth + MARGIN + x;	//操作点
-			output[ pos * 3   ] = output[ (pairpos + pos) * 3   ] = (char)(rand()%256); //赤
-			output[ pos * 3 +1] = output[ (pairpos + pos) * 3 +1] = (char)(rand()%256); //緑
-			output[ pos * 3 +2] = output[ (pairpos + pos) * 3 +2] = (char)(rand()%256); //青
-		}
-	}
-*/	
-	//浮き出るものの作成
+	//表示
 	for(int y=3; y < height; y+=5 ){
 		for(int x=3; x < width; x+=5 ){
 			//判定	
@@ -108,24 +78,6 @@ int main(int argc, char *argv[])
 		putchar('\n');
 	}
 	
-/*
-	//ファイルに書き出し
-	if( fp = fopen( outputfilename, "wb" ) ){
-		fwrite(output, out_size, 1, fp);
-		fclose(fp);
-	}else{
-		printf("%sを作成または開くことができませんでした。", outputfilename);
-		return 4;	//エラー終了4
-	}
-	
-
-	//終了通知
-	printf("%dx%dの画像を作成しました。\n", maxwidth, maxheight);	
-
-	//後処理
-	delete [] source;
-	delete [] output;
-*/
 	return 0;
 }
 
